@@ -1,0 +1,25 @@
+doctype html
+// got this login page at link https://uicookies.com/free-login-forms/
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Glassmorphism Login &mdash; uiCookies
+    link(rel='stylesheet' href='/stylesheets/glass.css')
+  body
+    .blob.b1
+    .blob.b2
+    .blob.b3
+    form.glass(onsubmit='event.preventDefault()')
+      h1 Sign in
+      p.sub Welcome back &mdash; Sign in to Listen to Music.
+      label(for='email') Email
+      input#email(type='email' placeholder='you@example.com' autocomplete='email' required='')
+      label(for='pw') Password
+      input#pw(type='password' placeholder='Your password' autocomplete='current-password' required='')
+      
+      a(href='/information') Sign In
+
+      p.alt
+        | First time here? 
+        a(href='/register') Create an account

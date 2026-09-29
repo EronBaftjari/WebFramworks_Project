@@ -1,0 +1,32 @@
+doctype html
+// based on a layout from uicookies.com/free-login-forms/
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0, viewport-fit=cover')
+    title Glassmorphism Sign Up &mdash; uiCookies
+    link(rel='stylesheet' href='/stylesheets/glass.css')
+  body
+    .blob.b1
+    .blob.b2
+    .blob.b3
+    form.glass(onsubmit='event.preventDefault()')
+      h1 Create account
+      p.sub Sign up to start listening to music.
+      .row
+        div
+          label(for='forename') Forename
+          input#forename(type='text' name='forename' placeholder='First name' autocomplete='given-name' required='')
+        div
+          label(for='surname') Surname
+          input#surname(type='text' name='surname' placeholder='Last name' autocomplete='family-name' required='')
+      label(for='dob') Date of birth
+      input#dob(type='date' name='dob' autocomplete='bday' required='')
+      label(for='email') Email
+      input#email(type='email' name='email' placeholder='you@example.com' autocomplete='email' required='')
+      label(for='pw') Password
+      input#pw(type='password' name='pw' placeholder='Your password' autocomplete='new-password' required='')
+      button(type='submit') Sign Up
+      p.alt
+        | Already have an account? 
+        a(href='/login') Sign in
