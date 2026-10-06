@@ -9,8 +9,17 @@ const register = function(req,res){
 
 const information = function(req,res){
 
-    res.render('information.pug')
+    res.render('information',{
+
+    title:"Pretty green eyes"
+        
+    });
+
+
 };
+
+
+
 
 module.exports = {
 
