@@ -152,64 +152,31 @@ head
     table.table
       thead
         tr
-          th MUSIC NAME
+          th Name is no sense
           th ALBUM
           th LAST LISTENED
           th TIMES PLAYED
-
-
-
-
-
-          
       tbody
-        tr.playing
-          td
-            .track
-              .cover
-              .track-name= title
-          td Outrun Echoes
-          td.now Listening Now
-          td
-            .plays 146
-            .plays-sub plays
-        tr
-          td
-            .track
-              .cover
-              .track-name Ghost in the Machine
-          td Cybernetic Soul
-          td 22 mins ago
-          td
-            .plays 92
-            .plays-sub plays
-        tr
-          td
-            .track
-              .cover
-              .track-name Stardust Horizon
-          td Nebula Dreams
-          td 1 hour ago
-          td
-            .plays 115
-            .plays-sub plays
-        tr
-          td
-            .track
-              .cover
-              .track-name Algorithm of Love
-          td Cold Code
-          td 4 hours ago
-          td
-            .plays 280
-            .plays-sub plays
-        tr
-          td
-            .track
-              .cover
-              .track-name Prism Void
-          td Reflections
-          td Yesterday
-          td
-            .plays 64
-            .plays-sub plays
+        each track in tracks
+          if track.playing
+            tr.playing
+              td
+                .track
+                  .cover
+                  .track-name= track.title
+              td= track.album
+              td.now= track.last
+              td
+                .plays= track.played
+                .plays-sub plays
+          else
+            tr
+              td
+                .track
+                  .cover
+                  .track-name= track.title
+              td= track.album
+              td= track.last
+              td
+                .plays= track.played
+                .plays-sub plays
