@@ -8,7 +8,7 @@ const songSchema = new mongoose.Schema({
   album:{
 
     type: String,
-    require: true
+    required: true
   },
   lastListened:{
       type: Date,
