@@ -8,5 +8,5 @@ router.get('/login', ctrlLocations.login);
 router.get('/register', ctrlLocations.register);
 router.get('/information', ctrlLocations.information);
 
-
+router.get('/', function (req, res) { res.redirect('/login'); });
 module.exports = router;
