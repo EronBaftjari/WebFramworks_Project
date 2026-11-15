@@ -14,7 +14,7 @@ const songSchema = new mongoose.Schema({
       type: Date,
     'default': Date.now
   },
-  Plays:{
+  played:{
      type: Number,
     'default': 0,
     min: 0

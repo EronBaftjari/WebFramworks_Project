@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const dbURI = 'mongodb+srv://eron1:eron12345@cluster0.7xwa96h.mongodb.net/myApp';
+const dbURI = 'mongodb+srv://eron1:eron12345@cluster0.7xwa96h.mongodb.net/MusicApp';
 
 mongoose.connection.on('disconnected',()=>{
 
@@ -10,3 +10,5 @@ mongoose.connection.on('disconnected',()=>{
 mongoose.connect(dbURI)
   .then(() => console.log('Mongoose is Finally Connected'))
   .catch(err => console.log('Could not connect:', err));
+
+require('./songs');
