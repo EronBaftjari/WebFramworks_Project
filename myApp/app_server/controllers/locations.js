@@ -1,8 +1,20 @@
 const axios = require('axios');
 
-const login = function(req,res){
-    res.render('login.pug')
+const login = async (req, res) => {
+
+  if (req.method === 'GET') {
+    return res.render('login');
+  }
+
+  try {
+    await axios.post('http://localhost:3000/api/login', req.body);
+    res.redirect('/information');
+
+  } catch (err) {
+    res.render('login', { message: err.response.data.message });
+  }
 };
+
 
 const register = function(req,res){
 
