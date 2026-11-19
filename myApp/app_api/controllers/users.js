@@ -8,4 +8,15 @@ const login = (req,res) =>{
 res.status(201).json ({message: "Succesfully registerd"});
 }
 
-module.exports = { login };
+const register = (req,res)=>{
+
+  const {forename,surname,email,password}= req.body;
+
+  if(!forename || !surname || !email || !password){
+
+    return res.status(400).json({"message": "All fields must be enterd to Register User"})
+  }
+  res.status(201).json({message: "Succesfully registerd a member"});
+}
+
+module.exports = { login,register};

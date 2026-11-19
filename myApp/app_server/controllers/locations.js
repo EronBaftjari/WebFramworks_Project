@@ -17,8 +17,9 @@ const login = async (req, res) => {
 
 
 const register = function(req,res){
+  res.render('register.pug');
 
-    res.render('register.pug')
+
 };
 
 const information = async function(req, res){
