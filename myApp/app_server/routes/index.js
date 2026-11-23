@@ -2,9 +2,17 @@ const express = require('express');
 const router = express.Router();
 const ctrlLocations = require('../controllers/locations');
 
+const passport = require('passport');
+
 /* Pages */
-router.get('/login', ctrlLocations.login);     // open the page -> show form
-router.post('/login', ctrlLocations.login);    // click Sign In -> send to API
+router.get('/login', ctrlLocations.login); 
+   
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/information',   // right password - go to information
+  failureRedirect: '/login',         // wrong password - back to login
+  failureMessage: true               // remember why it failed
+})); 
+
 router.get('/register', ctrlLocations.register);     // open the page -> show form
 router.post('/register', ctrlLocations.register);
 router.get('/information', ctrlLocations.information);

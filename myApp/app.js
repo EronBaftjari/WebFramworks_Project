@@ -20,6 +20,27 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// --- Passport setup ---
+const session = require('express-session');
+const passport = require('passport');
+const mongoose = require('mongoose');
+const User = mongoose.model('User');
+
+app.use(session({
+  secret: 'musicAppSecret',
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+// --- end Passport setup --
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 

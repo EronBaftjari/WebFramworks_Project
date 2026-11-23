@@ -4,19 +4,10 @@ const apiOptions = {
   server: 'http://localhost:3000'
 };
 
-const login = async (req, res) => {
-
-  if (req.method === 'GET') {
-    return res.render('login');
-  }
-
-  try {
-    await axios.post(apiOptions.server + '/api/login', req.body);
-    res.redirect('/information');
-
-  } catch (err) {
-    res.render('login', { message: err.response.data.message });
-  }
+const login = (req, res) => {
+  const messages = req.session.messages || [];
+  req.session.messages = [];
+  res.render('login', { message: messages[0] });
 };
 
 

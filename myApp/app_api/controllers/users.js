@@ -11,7 +11,7 @@ const login = async(req,res) =>{
     return res.status(400).json({message:"All fields must be enterd"})
   }
   try{
-    const user = await User.findOne({email:email});
+   const result = await User.authenticate()(email, password);
     if(!user){
       return res.status(404).json({message: "User not found"});
     }
@@ -35,12 +35,8 @@ const register = (req, res) => {
     return res.status(400).json({ message: "All fields must be entered to Register User" });
   }
 
-  User.create({
-    forename: forename,
-    surename: surname,
-    email: email,
-    password: password
-  })
+User.register(new User({ forename: forename, surename: surname, email: email }), password)
+
   .then(user => {
     res.status(201).json({ message: "User registered" });
   })
