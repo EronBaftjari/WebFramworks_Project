@@ -1,5 +1,9 @@
 const axios = require('axios');
 
+const apiOptions = {
+  server: 'http://localhost:3000'
+};
+
 const login = async (req, res) => {
 
   if (req.method === 'GET') {
@@ -7,7 +11,7 @@ const login = async (req, res) => {
   }
 
   try {
-    await axios.post('http://localhost:3000/api/login', req.body);
+    await axios.post(apiOptions.server + '/api/login', req.body);
     res.redirect('/information');
 
   } catch (err) {
@@ -16,15 +20,27 @@ const login = async (req, res) => {
 };
 
 
-const register = function(req,res){
-  res.render('register.pug');
+// AFTER
+const register = async (req, res) => {
 
+  if (req.method === 'GET') {
+    return res.render('register');
+  }
 
+  try {
+
+    await axios.post(apiOptions.server + '/api/register', req.body);
+    res.render('register', { message: 'User added' });
+
+  } catch (err) {
+    res.render('register', { message: err.response.data.message });
+
+  }
 };
 
 const information = async function(req, res){
     try{
-    const response = await axios.get('http://localhost:3000/api/songsList');
+    const response = await axios.get(apiOptions.server + '/api/songsList');
     const songs = response.data; 
 
     const tracks = songs.map(song => ({

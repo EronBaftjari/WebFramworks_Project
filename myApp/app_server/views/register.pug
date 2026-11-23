@@ -4,15 +4,17 @@ html(lang='en')
   head
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0, viewport-fit=cover')
-    title Glassmorphism Sign Up &mdash; uiCookies
+    title Sign Up &mdash; Music App
     link(rel='stylesheet' href='/stylesheets/glass.css')
   body
     .blob.b1
     .blob.b2
     .blob.b3
-    form.glass(onsubmit='event.preventDefault()')
+    form.glass(action='/register' method='post')
       h1 Create account
       p.sub Sign up to start listening to music.
+      if message
+        p.sub= message
       .row
         div
           label(for='forename') Forename
@@ -20,7 +22,6 @@ html(lang='en')
         div
           label(for='surname') Surname
           input#surname(type='text' name='surname' placeholder='Last name' autocomplete='family-name' required='')
-    
       label(for='email') Email
       input#email(type='email' name='email' placeholder='you@example.com' autocomplete='email' required='')
       label(for='pw') Password

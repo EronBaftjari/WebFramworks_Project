@@ -28,15 +28,25 @@ const login = async(req,res) =>{
 
 };
 
-const register = (req,res)=>{
+const register = (req, res) => {
+  const { forename, surname, email, password } = req.body;
 
-  const {forename,surname,email,password}= req.body;
-
-  if(!forename || !surname || !email || !password){
-
-    return res.status(400).json({"message": "All fields must be enterd to Register User"})
+  if (!forename || !surname || !email || !password) {
+    return res.status(400).json({ message: "All fields must be entered to Register User" });
   }
-  res.status(201).json({message: "Succesfully registerd a member"});
-}
+
+  User.create({
+    forename: forename,
+    surename: surname,
+    email: email,
+    password: password
+  })
+  .then(user => {
+    res.status(201).json({ message: "User registered" });
+  })
+  .catch(err => {
+    res.status(400).json({ message: "Error registering user" });
+  });
+};
 
 module.exports = { login,register};
